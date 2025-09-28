@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>macro control page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            font-size: 1.5rem;
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #status {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 control</h1>
+    <button onclick="startMacro()">▶ start</button>
+    <button onclick="stopMacro()">⏹ stop</button>
+    <p id="status">state: ⏹ stop</p>
+
+    <script>
+        let isRunning = false;
+
+        function updateStatus() {
+            const statusText = document.getElementById('status');
+            if (isRunning) {
+                statusText.textContent = 'state: ▶ excuting';
+                statusText.style.color = 'blue';
+            } else {
+                statusText.textContent = 'state: ⏹ stop';
+                statusText.style.color = 'red';
+            }
+        }
+
+        function startMacro() {
+            isRunning = true;
+            console.log("start!");
+            updateStatus();
+        }
+
+        function stopMacro() {
+            isRunning = false;
+            console.log("stop!");
+            updateStatus();
+        }
+
+        // 페이지 로딩 후 상태 표시
+        updateStatus();
+    </script>
+</body>
+</html>
