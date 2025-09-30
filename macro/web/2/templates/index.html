@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>실시간 데이터</title>
+  <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+</head>
+<body>
+  <h1>안드로이드 → PC 데이터</h1>
+  <div id="msg">대기중...</div>
+
+  <script>
+    const socket = io();
+    socket.on('new_data', data => {
+      document.getElementById('msg').innerText = JSON.stringify(data);
+    });
+  </script>
+</body>
+</html>
